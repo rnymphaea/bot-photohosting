@@ -96,6 +96,8 @@ async def stop_loading(query, state):
         else:
             await bot.send_message(chat_id=query.from_user.id, text="Произошла ошибка при добавлении фотографий!")
         tmp_files.pop(user_id, None)
+        if not album_data.get(user_id):
+            album_data.pop(user_id, None)
     else:
         print("something went wrong")
 
