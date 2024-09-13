@@ -1,6 +1,7 @@
 import asyncio
 
 from aiogram import Bot, Dispatcher
+from aiogram.methods import DeleteWebhook
 
 import config
 import handlers
@@ -14,6 +15,7 @@ dp = Dispatcher()
 
 async def main():
     dp.include_routers(handlers.router)
+    await bot(DeleteWebhook(drop_pending_updates=True))
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
